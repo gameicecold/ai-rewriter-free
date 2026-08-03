@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Free AI Paraphraser · Rewrite Text</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            max-width: 820px;
+            margin: 50px auto;
+            padding: 0 22px;
+            background: #f4f7fc;
+            display: flex;
+            flex-direction: column;
+            min-height: 90vh;
+        }
+
+        .card {
+            background: white;
+            padding: 30px 28px;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+            transition: box-shadow 0.15s ease;
+            flex: 1;
+        }
+
+        h2 {
+            font-size: 26px;
+            font-weight: 600;
+            color: #111;
+            letter-spacing: -0.3px;
+            margin-bottom: 6px;
+        }
+
+        .subhead {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 6px 0 16px 0;
+            border-bottom: 1px solid #eef2f6;
+            padding-bottom: 12px;
+        }
+
+        .limit {
+            color: #5f6b7a;
+            font-size: 15px;
+            background: #f0f3f8;
+            padding: 4px 14px;
+            border-radius: 60px;
+            font-weight: 450;
+        }
+
+        textarea {
+            width: 100%;
+            height: 200px;
+            padding: 16px 18px;
+            margin: 8px 0 12px 0;
+            border: 1px solid #dce2ec;
+            border-radius: 14px;
+            font-size: 15px;
+            line-height: 1.5;
+            resize: vertical;
+            transition: border 0.2s;
+            background: #fafcff;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+        }
+
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 13px 32px;
+            border-radius: 80px;
+            font-size: 17px;
+            font-weight: 550;
+            cursor: pointer;
+            transition: background 0.15s, transform 0.05s;
+            letter-spacing: 0.2px;
+            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+            display: inline-block;
+        }
+
+        button:hover {
+            background: #0066d6;
+        }
+
+        button:active {
+            transform: scale(0.97);
+        }
+
+        .action-bar {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin: 8px 0 12px 0;
+        }
+
+        .counter-badge {
+            font-size: 14px;
+            color: #3c4a5c;
+            background: #edf2f9;
+            padding: 5px 16px;
+            border-radius: 36px;
+        }
+
+        .result-box {
+            margin-top: 28px;
+            padding: 20px 22px;
+            background: #f6f9fe;
+            border-radius: 18px;
+            min-height: 120px;
+            border: 1px solid #e6edf6;
+            font-size: 15.5px;
+            line-height: 1.55;
+            color: #1e293b;
+            word-break: break-word;
+            white-space: pre-wrap;
+        }
+
+        .result-label {
+            font-weight: 500;
+            color: #1f2a41;
+            margin-bottom: 10px;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .result-label span {
+            background: #dce5f2;
+            padding: 0 12px;
+            border-radius: 40px;
+            font-size: 13px;
+            color: #1f3a5f;
+        }
+
+        .telegram-link {
+            margin-top: 36px;
+            text-align: center;
+            color: #334155;
+            font-size: 15px;
+            border-top: 1px solid #e2eaf2;
+            padding-top: 24px;
+            padding-bottom: 6px;
+        }
+
+        .telegram-link a {
+            color: #007bff;
+            font-weight: 650;
+            text-decoration: none;
+            border-bottom: 1px dotted rgba(0, 123, 255, 0.35);
+        }
+
+        .telegram-link a:hover {
+            border-bottom-color: #007bff;
+        }
+
+        .footer-note {
+            font-size: 13px;
+            color: #64748b;
+            margin-top: 4px;
+        }
+
+        @media (max-width: 520px) {
+            .card {
+                padding: 20px 16px;
+            }
+            h2 {
+                font-size: 21px;
+            }
+            button {
+                width: 100%;
+                justify-content: center;
+            }
+            .action-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .counter-badge {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>✍️ Free AI Paraphraser</h2>
+    <div class="subhead">
+        <span style="color: #2c3e50; font-weight: 460;">Rewrite any text — instantly</span>
+        <span class="limit">⚡ free daily · no login</span>
+    </div>
+
+    <textarea id="input" placeholder="Paste your text here..."></textarea>
+
+    <div class="action-bar">
+        <button onclick="rewrite()">🔄 Paraphrase</button>
+        <span class="counter-badge" id="usageDisplay">0 / 3 used today</span>
+    </div>
+
+    <!-- result area -->
+    <div class="result-box" id="result">
+        <div class="result-label">
+            📄 paraphrased output
+            <span>AI</span>
+        </div>
+        <div id="resultText" style="min-height: 44px; color: #1e293b;">Your rewritten version will appear here.</div>
+    </div>
+
+    <div class="telegram-link">
+        ✦ Unlimited use &amp; API Key → 
+        <a href="https://t.me/你的TG用户名" target="_blank" rel="noopener">@你的TG用户名</a>
+        <div class="footer-note">Telegram · 24/7 access</div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // 从 localStorage 读取当日调用次数 (按日期隔离)
+        const STORAGE_KEY = 'paraphraser_count';
+        const DATE_KEY = 'paraphraser_date';
+        const DAILY_LIMIT = 3;
+
+        function getToday() {
+            return new Date().toISOString().slice(0, 10); // '2026-08-03'
+        }
+
+        function loadCount() {
+            try {
+                const savedDate = localStorage.getItem(DATE_KEY);
+                const savedCount = localStorage.getItem(STORAGE_KEY);
+                if (savedDate === getToday()) {
+                    return savedCount ? parseInt(savedCount, 10) : 0;
+                } else {
+                    // 新的一天重置
+                    localStorage.setItem(DATE_KEY, getToday());
+                    localStorage.setItem(STORAGE_KEY, '0');
+                    return 0;
+                }
+            } catch (e) {
+                // localStorage 不可用 (隐私模式等) 回退内存计数
+                return null;
+            }
+        }
+
+        function saveCount(count) {
+            try {
+                localStorage.setItem(DATE_KEY, getToday());
+                localStorage.setItem(STORAGE_KEY, String(count));
+            } catch (e) {
+                // ignore
+            }
+        }
+
+        // 初始化计数 (优先localStorage, 否则内存变量)
+        let memoryCount = 0;
+        let persistentMode = true;
+        let initCount = loadCount();
+        if (initCount !== null) {
+            memoryCount = initCount;
+        } else {
+            persistentMode = false; // 无法持久化, 用内存计数 (刷新丢失)
+            memoryCount = 0;
+        }
+
+        // 更新显示
+        function updateUsageUI() {
+            const el = document.getElementById('usageDisplay');
+            if (el) {
+                el.textContent = `${memoryCount} / ${DAILY_LIMIT} used today`;
+            }
+            // 同时更新结果区提示 (但不覆盖主要内容)
+            const resultDiv = document.getElementById('resultText');
+            if (memoryCount >= DAILY_LIMIT && resultDiv) {
+                // 但如果已经有其他内容, 不强行覆盖, 只在空闲时显示提示?
+                // 由 rewrite 函数管理, 这里只做展示
+            }
+        }
+
+        // 确保全局 count 同步
+        window.__paraphraserCount = memoryCount;
+
+        // 暴露给 rewrite 使用
+        window.getCurrentCount = function() {
+            return memoryCount;
+        };
+
+        window.incrementCount = function() {
+            memoryCount += 1;
+            if (persistentMode) {
+                saveCount(memoryCount);
+            }
+            window.__paraphraserCount = memoryCount;
+            updateUsageUI();
+        };
+
+        window.resetCountIfNeeded = function() {
+            // 如果跨天, loadCount 已经处理, 但 memoryCount 可能还是旧值
+            const fresh = loadCount();
+            if (fresh !== null) {
+                memoryCount = fresh;
+            } else {
+                // 无localStorage, 保持原memoryCount (但不会跨天)
+            }
+            window.__paraphraserCount = memoryCount;
+            updateUsageUI();
+        };
+
+        // 初始UI
+        updateUsageUI();
+
+        // 每次页面加载检查日期变更 (若localStorage可用自动处理)
+        // 对于纯内存模式, 跨天刷新页面会重置, 没问题
+    })();
+
+    async function rewrite() {
+        // 重新同步计数 (防止多标签页修改, 但简单场景够用)
+        if (window.resetCountIfNeeded) window.resetCountIfNeeded();
+
+        const currentCount = window.getCurrentCount ? window.getCurrentCount() : window.__paraphraserCount;
+        const DAILY_LIMIT = 3;
+
+        if (currentCount >= DAILY_LIMIT) {
+            const resultBox = document.getElementById('resultText');
+            if (resultBox) {
+                resultBox.innerText = '❌ Daily limit reached. For unlimited use, message Telegram @FreeAITier';
+      
+            return;
+        }
+
+        const inputEl = document.getElementById('input');
+        const text = inputEl.value.trim();
+        if (!text) {
+            alert('📝 Please paste or type some text first.');
+            return;
+        }
+
+        const resultTextEl = document.getElementById('resultText');
+        resultTextEl.innerText = '⏳ Processing...';
+
+        // 模拟LLM请求 —— 请将下方URL替换为您的真实API端点
+        // 当前使用演示端点，实际部署请替换为 https://your-api.com/chat/completions 等
+        const API_ENDPOINT = 'https://api.openai.com/v1/chat/completions'; // 示例，需要替换为您自己的转发接口
+
+        try {
+            const response = await fetch(API_ENDPOINT, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    // ⚠️ 注意: 在生产环境中，绝不要在前端硬编码API密钥！
+                    // 应通过后端代理或环境变量注入。此处仅为结构示例。
+                    'Authorization': 'Bearer sk-your-key-placeholder'  
+                },
+                body: JSON.stringify({
+                    model: 'gpt-3.5-turbo',   // 可更换为 deepseek-chat 或其他
+                    messages: [
+                        {
+                            role: 'user',
+                            content: `Paraphrase the following text to make it clearer and more natural. Keep the original meaning:\n\n${text}`
+                        }
+                    ],
+                    temperature: 0.7,
+                    max_tokens: 1024
+                })
+            });
+
+            if (!response.ok) {
+                // 尝试提取错误信息
+                let errorMsg = `HTTP ${response.status}`;
+                try {
+                    const errBody = await response.json();
+                    if (errBody.error && errBody.error.message) errorMsg += ': ' + errBody.error.message;
+                } catch (_) {}
+                throw new Error(errorMsg);
+            }
+
+            const data = await response.json();
+            let output = data?.choices?.[0]?.message?.content || '⚠️ No paraphrase returned.';
+
+            // 清理可能的空响应
+            if (!output.trim()) output = '(empty response)';
+
+            // 显示结果
+            resultTextEl.innerText = output;
+
+            // ✅ 成功调用后增加计数
+            if (window.incrementCount) {
+                window.incrementCount();
+            }
+
+        } catch (error) {
+            console.error('Paraphrase error:', error);
+            resultTextEl.innerText = `❌ Request failed: ${error.message || 'unknown error'}. Please check your API endpoint or network.`;
+
+            // 注意：即使失败也不消耗次数，所以不增加计数
+        }
+    }
+
+    // 附加：让回车触发 paraphrase (可选)
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' && e.ctrlKey) {
+            // Ctrl+Enter 触发改写
+            rewrite();
+        }
+    });
+</script>
+
+<!-- 说明：本页面保留完整免费改写功能，每日限制3次 (基于localStorage)。
+     请务必将 API_ENDPOINT 和 Authorization 替换为你自己的LLM接口。
+     推荐使用后端转发以避免密钥泄露。 -->
+</body>
+</html>
