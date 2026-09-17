@@ -3,198 +3,110 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Rewrite text clearly and naturally with a free AI paraphrasing tool.">
-  <title>Free AI Paraphraser</title>
+  <meta name="description" content="Rewrite awkward English into natural, professional English for emails, customer replies, product listings, and social posts.">
+  <title>Natural English Rewriter — Free, No Sign-up</title>
   <style>
-    :root {
-      color-scheme: light;
-      --ink: #15243a;
-      --muted: #667085;
-      --line: #dbe4ef;
-      --brand: #5b4ff5;
-      --brand-dark: #4438d8;
-      --paper: rgba(255, 255, 255, .9);
-    }
-    * { box-sizing: border-box; }
-    body {
-      min-height: 100vh;
-      margin: 0;
-      padding: 24px;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at 12% 10%, #dff4ff 0, transparent 34%),
-        radial-gradient(circle at 88% 84%, #eee5ff 0, transparent 38%),
-        #f6f8fc;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-    main { width: min(900px, 100%); margin: 6vh auto 0; }
-    .eyebrow {
-      display: inline-flex;
-      gap: 8px;
-      align-items: center;
-      padding: 7px 11px;
-      border: 1px solid #d9d5ff;
-      border-radius: 999px;
-      color: var(--brand-dark);
-      background: #f3f1ff;
-      font-size: 13px;
-      font-weight: 700;
-    }
-    h1 { margin: 18px 0 10px; font-size: clamp(34px, 7vw, 62px); line-height: 1; letter-spacing: -.045em; }
-    .intro { max-width: 650px; margin: 0 0 28px; color: var(--muted); font-size: 18px; line-height: 1.6; }
-    .card {
-      padding: clamp(18px, 4vw, 34px);
-      border: 1px solid rgba(219, 228, 239, .9);
-      border-radius: 24px;
-      background: var(--paper);
-      box-shadow: 0 22px 60px rgba(38, 53, 83, .11);
-      backdrop-filter: blur(16px);
-    }
-    .toolbar { display: flex; justify-content: space-between; gap: 16px; margin-bottom: 10px; color: var(--muted); font-size: 14px; }
-    label { color: var(--ink); font-weight: 750; }
-    textarea {
-      display: block;
-      width: 100%;
-      min-height: 190px;
-      resize: vertical;
-      padding: 16px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      outline: none;
-      color: var(--ink);
-      background: #fff;
-      font: inherit;
-      font-size: 16px;
-      line-height: 1.55;
-      transition: border-color .2s, box-shadow .2s;
-    }
-    textarea:focus { border-color: #8b83ff; box-shadow: 0 0 0 4px rgba(91, 79, 245, .11); }
-    .actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin: 16px 0 22px; }
-    button {
-      border: 0;
-      border-radius: 12px;
-      padding: 13px 22px;
-      color: white;
-      background: var(--brand);
-      font: inherit;
-      font-weight: 750;
-      cursor: pointer;
-      box-shadow: 0 8px 22px rgba(91, 79, 245, .25);
-    }
-    button:hover { background: var(--brand-dark); }
-    button:disabled { cursor: wait; opacity: .65; }
-    .counter { color: var(--muted); font-size: 14px; }
-    .output {
-      min-height: 140px;
-      padding: 16px;
-      border: 1px dashed #cfd9e6;
-      border-radius: 14px;
-      background: #f8fafc;
-      white-space: pre-wrap;
-      line-height: 1.6;
-    }
-    .output[data-state="error"] { color: #b42318; border-color: #f3b7b2; background: #fff7f6; }
-    .contact { margin: 22px 0 0; text-align: center; color: var(--muted); }
-    .contact a { color: var(--brand-dark); font-weight: 750; text-decoration: none; }
-    .contact a:hover { text-decoration: underline; }
-    footer { padding: 22px 0; color: #8791a2; text-align: center; font-size: 13px; }
+    :root { color-scheme: light; --ink:#122033; --muted:#647084; --line:#dce4ee; --brand:#5b4ff5; --brand-dark:#4438d8; --soft:#f3f1ff; --paper:rgba(255,255,255,.92); }
+    * { box-sizing:border-box; }
+    body { min-height:100vh; margin:0; color:var(--ink); background:radial-gradient(circle at 12% 8%,#dff4ff 0,transparent 32%),radial-gradient(circle at 88% 80%,#eee5ff 0,transparent 36%),#f6f8fc; font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    a { color:inherit; }
+    main { width:min(940px,calc(100% - 32px)); margin:0 auto; padding:54px 0 24px; }
+    .hero { text-align:center; }
+    .eyebrow { display:inline-flex; align-items:center; gap:8px; padding:7px 12px; border:1px solid #d9d5ff; border-radius:999px; color:var(--brand-dark); background:var(--soft); font-size:13px; font-weight:750; }
+    h1 { max-width:790px; margin:20px auto 14px; font-size:clamp(38px,7vw,66px); line-height:1.02; letter-spacing:-.05em; }
+    .intro { max-width:690px; margin:0 auto 30px; color:var(--muted); font-size:clamp(17px,2vw,20px); line-height:1.55; }
+    .trust { display:flex; flex-wrap:wrap; justify-content:center; gap:10px 22px; margin:-14px 0 28px; color:#6d7788; font-size:13px; }
+    .card { padding:clamp(18px,4vw,34px); border:1px solid rgba(219,228,239,.95); border-radius:24px; background:var(--paper); box-shadow:0 22px 60px rgba(38,53,83,.11); backdrop-filter:blur(16px); }
+    .label-row { display:flex; align-items:center; justify-content:space-between; gap:14px; margin-bottom:10px; }
+    label,.label { font-size:14px; font-weight:800; }
+    .text-button { padding:0; border:0; color:var(--brand-dark); background:transparent; font:inherit; font-size:14px; font-weight:750; cursor:pointer; }
+    textarea { display:block; width:100%; min-height:190px; resize:vertical; padding:16px; border:1px solid var(--line); border-radius:14px; outline:none; color:var(--ink); background:#fff; font:inherit; font-size:16px; line-height:1.55; transition:border-color .2s,box-shadow .2s; }
+    textarea:focus { border-color:#8b83ff; box-shadow:0 0 0 4px rgba(91,79,245,.11); }
+    .under-input { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px; margin:12px 0 20px; }
+    .styles { display:flex; flex-wrap:wrap; gap:8px; }
+    .style-button { padding:8px 12px; border:1px solid var(--line); border-radius:999px; color:#465266; background:#fff; font:inherit; font-size:13px; font-weight:700; cursor:pointer; }
+    .style-button[aria-pressed="true"] { border-color:#8d85ff; color:var(--brand-dark); background:var(--soft); }
+    .word-count { color:var(--muted); font-size:13px; }
+    .word-count.over { color:#b42318; font-weight:700; }
+    .primary { width:100%; border:0; border-radius:13px; padding:14px 22px; color:#fff; background:var(--brand); font:inherit; font-weight:800; cursor:pointer; box-shadow:0 8px 22px rgba(91,79,245,.25); }
+    .primary:hover { background:var(--brand-dark); }
+    .primary:disabled { cursor:wait; opacity:.65; }
+    .result-header { margin-top:26px; }
+    .copy-button { display:none; padding:7px 11px; border:1px solid var(--line); border-radius:9px; color:#465266; background:#fff; font:inherit; font-size:13px; font-weight:750; cursor:pointer; }
+    .copy-button.visible { display:inline-block; }
+    .output { min-height:140px; padding:16px; border:1px dashed #cfd9e6; border-radius:14px; background:#f8fafc; white-space:pre-wrap; line-height:1.65; }
+    .output[data-state="error"] { color:#b42318; border-color:#f3b7b2; background:#fff7f6; }
+    .upgrade { display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:14px; margin:22px 0 0; color:var(--muted); font-size:14px; }
+    .upgrade a { padding:10px 16px; border-radius:10px; color:#fff; background:#172033; font-weight:750; text-decoration:none; }
+    .use-cases { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:22px; }
+    .use-case { padding:18px; border:1px solid var(--line); border-radius:16px; background:rgba(255,255,255,.68); }
+    .use-case strong { display:block; margin-bottom:5px; font-size:14px; }
+    .use-case span { color:var(--muted); font-size:13px; line-height:1.45; }
+    footer { padding:26px 0 8px; color:#818b9c; text-align:center; font-size:13px; }
+    footer a { margin-left:12px; }
+    @media (max-width:720px) { .use-cases{grid-template-columns:1fr 1fr} main{padding-top:34px} }
+    @media (max-width:440px) { .use-cases{grid-template-columns:1fr} .under-input{align-items:flex-start;flex-direction:column} }
   </style>
 </head>
 <body>
   <main>
-    <span class="eyebrow">✦ No login required</span>
-    <h1>Rewrite it better.</h1>
-    <p class="intro">Turn rough text into clear, natural writing in seconds. Your text is sent only to generate the rewrite.</p>
-
+    <header class="hero">
+      <span class="eyebrow">✦ Free · No sign-up</span>
+      <h1>Turn awkward English into natural English.</h1>
+      <p class="intro">Rewrite emails, customer replies, product listings, and social posts so they sound clear, fluent, and professional.</p>
+      <div class="trust"><span>✓ Up to 500 words per rewrite</span><span>✓ Keeps your original meaning</span><span>✓ Works in seconds</span></div>
+    </header>
     <section class="card" aria-labelledby="tool-title">
-      <div class="toolbar">
-        <label id="tool-title" for="input">Your text</label>
-        <span id="characters">0 / 5,000</span>
+      <div class="label-row"><label id="tool-title" for="input">Your English text</label><button class="text-button" id="example" type="button">Try an example</button></div>
+      <textarea id="input" placeholder="Paste the English you want to improve…"></textarea>
+      <div class="under-input">
+        <div class="styles" aria-label="Writing style">
+          <button class="style-button" type="button" data-style="professional" aria-pressed="true">Professional</button>
+          <button class="style-button" type="button" data-style="friendly" aria-pressed="false">Friendly</button>
+          <button class="style-button" type="button" data-style="casual" aria-pressed="false">Casual</button>
+          <button class="style-button" type="button" data-style="shorter" aria-pressed="false">Shorter</button>
+        </div>
+        <span class="word-count" id="word-count">0 / 500 words</span>
       </div>
-      <textarea id="input" maxlength="5000" placeholder="Paste the text you want to rewrite…"></textarea>
-      <div class="actions">
-        <button id="rewrite" type="button">Paraphrase text</button>
-        <span class="counter" id="counter">3 free rewrites available today</span>
-      </div>
-      <div class="toolbar"><label for="result">Rewritten text</label></div>
-      <div class="output" id="result" role="status" aria-live="polite">Your rewritten text will appear here.</div>
+      <button class="primary" id="rewrite" type="button">Rewrite my English</button>
+      <div class="label-row result-header"><span class="label">Natural English</span><button class="copy-button" id="copy" type="button">Copy result</button></div>
+      <div class="output" id="result" role="status" aria-live="polite">Your improved version will appear here.</div>
     </section>
-
-    <p class="contact">Need more usage? Message <a href="https://t.me/FreeAITier" target="_blank" rel="noopener noreferrer">@FreeAITier on Telegram</a>.</p>
-    <footer>AI can make mistakes. Review important text before using it.</footer>
+    <div class="upgrade"><span>Need unlimited rewrites or API access?</span><a href="https://t.me/FreeAITier" target="_blank" rel="noopener noreferrer">Get unlimited access</a></div>
+    <section class="use-cases" aria-label="Popular uses">
+      <div class="use-case"><strong>Business emails</strong><span>Sound confident and professional.</span></div>
+      <div class="use-case"><strong>Customer replies</strong><span>Write helpful, friendly responses.</span></div>
+      <div class="use-case"><strong>Product listings</strong><span>Make descriptions clear and persuasive.</span></div>
+      <div class="use-case"><strong>Social posts</strong><span>Polish captions without losing your voice.</span></div>
+    </section>
+    <footer>AI can make mistakes. Review important text before using it.<a href="/privacy">Privacy</a></footer>
   </main>
-
   <script>
-    const DAILY_LIMIT = 3;
-    const input = document.querySelector('#input');
-    const button = document.querySelector('#rewrite');
-    const result = document.querySelector('#result');
-    const counter = document.querySelector('#counter');
-    const characters = document.querySelector('#characters');
-
-    function localUsage() {
-      const day = new Date().toISOString().slice(0, 10);
-      try {
-        const saved = JSON.parse(localStorage.getItem('paraphraserUsage') || '{}');
-        return saved.day === day ? saved : { day, count: 0 };
-      } catch {
-        return { day, count: 0 };
-      }
-    }
-
-    function updateCounter() {
-      const remaining = Math.max(0, DAILY_LIMIT - localUsage().count);
-      counter.textContent = `${remaining} free rewrite${remaining === 1 ? '' : 's'} available today`;
-    }
-
-    input.addEventListener('input', () => {
-      characters.textContent = `${input.value.length.toLocaleString()} / 5,000`;
+    const MAX_WORDS=500;
+    const input=document.querySelector('#input');
+    const rewriteButton=document.querySelector('#rewrite');
+    const result=document.querySelector('#result');
+    const wordCount=document.querySelector('#word-count');
+    const copyButton=document.querySelector('#copy');
+    const exampleButton=document.querySelector('#example');
+    const styleButtons=[...document.querySelectorAll('.style-button')];
+    let selectedStyle='professional';
+    function countWords(value){return value.trim()?value.trim().split(/\s+/).length:0}
+    function updateWordCount(){const words=countWords(input.value);wordCount.textContent=`${words.toLocaleString()} / ${MAX_WORDS} words`;wordCount.classList.toggle('over',words>MAX_WORDS);return words}
+    input.addEventListener('input',updateWordCount);
+    styleButtons.forEach(styleButton=>styleButton.addEventListener('click',()=>{selectedStyle=styleButton.dataset.style;styleButtons.forEach(button=>button.setAttribute('aria-pressed',String(button===styleButton)))}));
+    exampleButton.addEventListener('click',()=>{input.value='Hello, I want to ask if you already check my order because customer wait long time and want answer soon.';updateWordCount();input.focus()});
+    copyButton.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(result.textContent);copyButton.textContent='Copied!';setTimeout(()=>{copyButton.textContent='Copy result'},1600)}catch{copyButton.textContent='Select and copy'}});
+    rewriteButton.addEventListener('click',async()=>{
+      const text=input.value.trim();const words=updateWordCount();copyButton.classList.remove('visible');
+      if(!text){input.focus();result.dataset.state='error';result.textContent='Please enter some English text first.';return}
+      if(words>MAX_WORDS){result.dataset.state='error';result.textContent='Please shorten your text to 500 words or fewer.';return}
+      rewriteButton.disabled=true;rewriteButton.textContent='Improving your English…';result.dataset.state='';result.textContent='Creating a natural rewrite…';
+      try{const response=await fetch('/api/rewrite',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text,style:selectedStyle})});const data=await response.json().catch(()=>({}));if(!response.ok)throw new Error(data.error||'The rewrite failed. Please try again.');result.textContent=data.result;copyButton.classList.add('visible')}
+      catch(error){result.dataset.state='error';result.textContent=error.message}
+      finally{rewriteButton.disabled=false;rewriteButton.textContent='Rewrite my English'}
     });
-
-    button.addEventListener('click', async () => {
-      const text = input.value.trim();
-      if (!text) {
-        input.focus();
-        result.dataset.state = 'error';
-        result.textContent = 'Please enter some text first.';
-        return;
-      }
-
-      if (localUsage().count >= DAILY_LIMIT) {
-        result.dataset.state = 'error';
-        result.innerHTML = 'Daily limit reached. <a href="https://t.me/FreeAITier" target="_blank" rel="noopener noreferrer">Message us on Telegram</a> for more usage.';
-        return;
-      }
-
-      button.disabled = true;
-      button.textContent = 'Rewriting…';
-      result.dataset.state = '';
-      result.textContent = 'Working on your rewrite…';
-
-      try {
-        const response = await fetch('/api/rewrite', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ text })
-        });
-        const data = await response.json().catch(() => ({}));
-        if (!response.ok) throw new Error(data.error || 'The rewrite failed. Please try again.');
-
-        result.textContent = data.result;
-        const usage = localUsage();
-        usage.count += 1;
-        localStorage.setItem('paraphraserUsage', JSON.stringify(usage));
-        updateCounter();
-      } catch (error) {
-        result.dataset.state = 'error';
-        result.textContent = error.message;
-      } finally {
-        button.disabled = false;
-        button.textContent = 'Paraphrase text';
-      }
-    });
-
-    updateCounter();
+    updateWordCount();
   </script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 # Free AI Paraphraser
 
-A small Vercel-ready paraphrasing website backed by DeepSeek. The API key stays in a server-side environment variable and is never sent to visitors.
+A Vercel-ready English rewriting website backed by DeepSeek. It is designed for non-native English speakers and supports Professional, Friendly, Casual, and Shorter styles. The API key stays in a server-side environment variable and is never sent to visitors.
 
 ## Deploy to Vercel
 
